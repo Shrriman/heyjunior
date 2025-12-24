@@ -512,29 +512,55 @@ document.addEventListener('click', function() {
       }
 
       function endGame() {
-        setTimeout(() => {
-            document.querySelector(".main-card").style = "transform:scale(0);opacity:0 !important;transition:all .7s ease";
-            stikerScale = document.querySelector('#stiker4');
-            teksScale = document.querySelector('#teks4');
-        
-            setTimeout(() => {
-                document.querySelector(".main-card").style.display = "none";
-                
-                scrollContainer.classList.remove("abs");
-                scrollContainer.classList.remove("scale0");
-                scrollContainer.classList.add("scale1");
-    
-                setTimeout(function(){
-                    stikerScale.classList.remove("abs");
-                    stikerScale.classList.remove("scale0");
-                    stikerScale.classList.add("scale1");
-        
-                    setTimeout(katanimasi, 100);
-                }, 200);
+    setTimeout(() => {
+        document.querySelector(".main-card").style = "transform:scale(0);opacity:0 !important;transition:all .7s ease";
+        stikerScale = document.querySelector('#stiker4');
+        teksScale = document.querySelector('#teks4');
 
-            }, 400);
+        setTimeout(() => {
+            document.querySelector(".main-card").style.display = "none";
+
+            scrollContainer.classList.remove("abs");
+            scrollContainer.classList.remove("scale0");
+            scrollContainer.classList.add("scale1");
+
+            setTimeout(function(){
+                stikerScale.classList.remove("abs");
+                stikerScale.classList.remove("scale0");
+                stikerScale.classList.add("scale1");
+
+                // Call the typing animation
+                setTimeout(katanimasi, 100);
+
+                // ✅ Button create and show
+                let nextButtonDiv = document.createElement("div");
+                nextButtonDiv.style.textAlign = "center";
+                nextButtonDiv.style.marginTop = "20px";
+
+                let nextButton = document.createElement("button");
+                nextButton.textContent = "Click Here for Surprise 🎉";
+                nextButton.style.padding = "10px 20px";
+                nextButton.style.fontSize = "16px";
+                nextButton.style.borderRadius = "8px";
+                nextButton.style.cursor = "pointer";
+                nextButton.style.backgroundColor = "#ff0066";
+                nextButton.style.color = "white";
+                nextButton.style.border = "none";
+
+                // Button click -> open index1.html
+                nextButton.onclick = function() {
+                    window.location.href = "index1.html"; // dusre page ka naam
+                }
+
+                nextButtonDiv.appendChild(nextButton);
+                document.body.appendChild(nextButtonDiv);
+
+            }, 200);
+
         }, 400);
-      }
+    }, 400);
+}
+
 
       function shuffle() {
         cards.forEach(card => {
@@ -558,6 +584,13 @@ document.addEventListener("click", function (e) {
   });
 });
 </script>
+
+<div id="nextPageButton" style="text-align:center; margin-top:20px; display:none;">
+    <button style="padding:10px 20px; font-size:16px; border-radius:8px; cursor:pointer; background-color:#ff0066; color:white; border:none;">
+        Click Here for Surprise 🎉
+    </button>
+</div>
+
 	
 </body>
 </html>
